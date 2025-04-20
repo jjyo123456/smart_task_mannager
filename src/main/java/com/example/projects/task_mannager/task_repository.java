@@ -3,7 +3,7 @@ package com.example.projects.task_mannager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Repository;
+
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@Repository
+
 public class task_repository {
 
     private final JdbcTemplate jdbcTemplate;
@@ -23,7 +23,7 @@ public class task_repository {
     }
 
     // Method to add a task
-    public void add(task taskk) {
+    public void add_task(task taskk) {
         String sql_entry = """
                 INSERT INTO task_mannager (TASK, DESCRIPTION, DUE_DATE, STARTED_AT, ENDS_AT, STATUS, PRIORITY) 
                 VALUES (?, ?, ?, ?, ?, ?, ?)
@@ -40,7 +40,7 @@ public class task_repository {
     }
 
     
-    public void update(Map<String, Object> fieldsToUpdate, String id) {
+    public void update_task(Map<String, Object> fieldsToUpdate, String id) {
 
         
         ArrayList<Object> paramValueList = new ArrayList<>();
@@ -64,7 +64,7 @@ public class task_repository {
     }
 
     // Method to delete a task by ID
-    public int deleteTaskById(int id) {
+    public int deleteTaskById(String id) {
         String sql = "DELETE FROM task_mannager WHERE ID = ?";
         return jdbcTemplate.update(sql, id); 
     }
